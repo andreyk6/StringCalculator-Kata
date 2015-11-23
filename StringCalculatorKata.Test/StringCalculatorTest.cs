@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace StringCalculatorKata.Test
 {
@@ -11,6 +6,14 @@ namespace StringCalculatorKata.Test
     [TestFixture]
     public class StringCalculatorTest
     {
+        private StringCalculator stringCalculator;
+
+        [SetUp]
+        public void InitTest()
+        {
+            stringCalculator = new StringCalculator();
+        }
+
         [Test]
         public void Add_WhenEmptyString_Returns0()
         {
@@ -87,10 +90,9 @@ namespace StringCalculatorKata.Test
             ArrangeActAndAssert(numbers, excepted);
         }
 
-        private static void ArrangeActAndAssert(string numbers, int excepted)
+        private void ArrangeActAndAssert(string numbers, int excepted)
         {
-            StringCalculator sCalc = new StringCalculator();
-            var result = sCalc.Add(numbers);
+            var result = stringCalculator.Add(numbers);
             Assert.AreEqual(result, excepted);
         }
     }
